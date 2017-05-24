@@ -10,6 +10,8 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { MainEffects } from './effects/main-store-effects';
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyA30SGQ-4ozFHftYzsHlQxFdqVgbvuaLVU",
@@ -29,7 +31,9 @@ export const firebaseConfig = {
     HttpModule,
     StoreModule.provideStore({mainStoreReducer}),
     EffectsModule.run(MainEffects),
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule, // imports firebase/database, only needed for database features
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

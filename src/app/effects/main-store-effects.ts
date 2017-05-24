@@ -4,10 +4,11 @@
 import {Effect, Actions, toPayload} from '@ngrx/effects';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class MainEffects {
-  constructor(private action$: Actions) {}
+  constructor(private action$: Actions, private af: AngularFireDatabase) {}
 
   @Effect() update$ = this.action$
     .ofType('SUPER_SIMPLE_EFFECT')
@@ -32,12 +33,12 @@ export class MainEffects {
         )
     )
 
-  // @Effect() pullArrayFromFirebase$ = this.action$
-  //   .ofType('PULL_ARRAY_FROM_FIREBASE')
-  //   .switchMap(() => {
-  //     // return this.af.database.object('/cypherapp/rooms/')
-  //     //   .switchMap(result =>
-  //     //     Observable.of({type: "GOT_FIREBASE_ARRAY", payload: {pulledArray: result}})
-  //     //   )
-  //   });
+  @Effect() pullArrayFromFirebase$ = this.action$
+    .ofType('PULL_ARRAY_FROM_FIREBASE')
+    .switchMap(() => {
+      return this.af.list('/cypherapp/rooms/')
+        .switchMap(result =>
+          Observable.of({type: "GOT_FIREBASE_ARRAY", payload: {pulledArray: result}})
+        )
+    });
 }

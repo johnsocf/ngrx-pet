@@ -12,18 +12,21 @@ import { MainEffects } from './effects/main-store-effects';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { LifestyleOverviewComponent } from './components/lifestyle-overview/lifestyle-overview.component';
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyA30SGQ-4ozFHftYzsHlQxFdqVgbvuaLVU",
-  authDomain: "cypherapp-ef93a.firebaseapp.com",
-  databaseURL: "https://cypherapp-ef93a.firebaseio.com",
-  storageBucket: "cypherapp-ef93a.appspot.com",
-  messagingSenderId: "550160402640"
+  apiKey: "AIzaSyC06PQZY0-xDGmutG_BOdu4Rqb3s5_rT00",
+  authDomain: "pet-journal.firebaseapp.com",
+  databaseURL: "https://pet-journal.firebaseio.com",
+  projectId: "pet-journal",
+  storageBucket: "pet-journal.appspot.com",
+  messagingSenderId: "876681403284"
 };
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LifestyleOverviewComponent
   ],
   imports: [
     BrowserModule,

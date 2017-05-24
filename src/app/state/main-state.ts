@@ -1,9 +1,13 @@
-/**
- * Created by catherinejohnson on 5/24/17.
- */
+
 export interface State {
   counter: number;
+  displayText: string;
+  petInfo: object;
 };
+
 export const initialState: State = {
-  counter: 10
-};
+  counter: 10,
+  displayText:'loading...',
+  petInfo: {}
+}
+

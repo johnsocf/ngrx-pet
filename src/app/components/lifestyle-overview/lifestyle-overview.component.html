@@ -1,0 +1,36 @@
+<p>
+  lifestyle-overview works!
+</p>
+
+<h1>{{name}}</h1>
+
+<ul>
+  <h1>Exercise</h1>
+  <li *ngFor="let exercise of needs.exercise">
+
+      <p>Type: {{exercise.subType}}</p>
+      <p>{{exercise.amount}} times {{exercise.frequency}}</p>
+
+  </li>
+</ul>
+
+<ul>
+  <h1>Grooming</h1>
+  <li *ngFor="let grooming of needs.grooming">
+
+      <p>Type: {{grooming.subType}}</p>
+      <p>{{grooming.amount}} times {{grooming.frequency}}</p>
+
+  </li>
+</ul>
+
+<ul>
+  <h1>Purchases</h1>
+  <li *ngFor="let purchases of needs.purchases">
+
+      <p>Type: {{purchases.subType}}</p>
+      <p>{{purchases.amount}} {{purchases.frequency}}</p>
+
+  </li>
+</ul>
+

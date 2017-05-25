@@ -1,0 +1,40 @@
+<form #f="ngForm">
+
+  <div class="form-group">
+    <label>pooped</label>
+    <input type="checkbox" [checked]="task.poop" (change)="boxChecked($event)" class="form-control" name="poop" [(ngModel)]="task.poop" />
+  </div>
+
+  <div class="form-group">
+    <label>peed</label>
+    <input type="checkbox" [checked]="task.pee" (change)="boxChecked($event)" class="form-control" name="pee" [(ngModel)]="task.pee" />
+  </div>
+
+  <div class="form-group">
+    <label>fed</label>
+    <input type="checkbox" [checked]="task.fed" (change)="boxChecked($event)" class="form-control" name="fed" [(ngModel)]="task.fed" />
+  </div>
+
+  <div class="form-group">
+    <label>treats</label>
+    <input type="checkbox" [checked]="task.treats" (change)="boxChecked($event)" class="form-control" name="treats" [(ngModel)]="task.treats" />
+  </div>
+
+  <div class="form-group">
+    <label>watered</label>
+    <input type="checkbox" [checked]="task.watered" (change)="boxChecked($event)" class="form-control" name="watered" [(ngModel)]="task.watered" />
+  </div>
+
+  <div class="form-group">
+    <label>walked</label>
+    <input type="checkbox" [checked]="task.walked" (change)="boxChecked($event)" class="form-control" name="walked" [(ngModel)]="task.walked" />
+  </div>
+
+  <div class="form-group">
+    <label>played</label>
+    <input type="checkbox" [checked]="task.played" (change)="boxChecked($event)" class="form-control" name="played" [(ngModel)]="task.played" />
+  </div>
+
+  <button type="submit" (click)="save(f.value)">submit</button>
+
+</form>

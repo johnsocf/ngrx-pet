@@ -13,6 +13,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LifestyleOverviewComponent } from './components/lifestyle-overview/lifestyle-overview.component';
+import { TasksComponent } from './components/tasks/tasks.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyC06PQZY0-xDGmutG_BOdu4Rqb3s5_rT00",
@@ -26,7 +27,8 @@ export const firebaseConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    LifestyleOverviewComponent
+    LifestyleOverviewComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,

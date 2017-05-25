@@ -14,7 +14,7 @@ export class AppComponent {
   data = {};
   displayText:string = '';
 
-  constructor (private store:Store<State>) {
+  constructor (private store: Store <State>) {
     console.log('we have a store! ' + store);
 
     store.select('mainStoreReducer')

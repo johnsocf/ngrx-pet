@@ -17,7 +17,6 @@ export class LifestyleOverviewComponent {
   @Input()
   petData: object;
   constructor() { }
-
   ngOnInit() {
     if (this.petData) {
       console.log('pet info in lifestyle overview component', this.petData);
@@ -33,7 +32,6 @@ export class LifestyleOverviewComponent {
       this.needs.grooming = _.groupBy(doggie.needs, 'mainType').grooming;
       this.needs.purchases = _.groupBy(doggie.needs, 'mainType').purchases;
       this.behavior = doggie.behavior;
-      debugger;
     }
   }
 

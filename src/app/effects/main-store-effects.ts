@@ -6,6 +6,11 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
+const onComplete = (error) => {
+  console.log('error?', error);
+}
+
+
 @Injectable()
 export class MainEffects {
   constructor(private action$: Actions, private af: AngularFireDatabase) {}
@@ -43,4 +48,17 @@ export class MainEffects {
           }
         )
     });
+
+  @Effect() addNewTask$ = this.action$
+    .ofType('ADD_NEW_TASK')
+    .map(toPayload)
+    .switchMap(payload => {
+      debugger;
+      this.af.list('/Pets/0/tasks').push({
+        "pooped": payload.poop,
+        "walked": payload.walked
+      });
+       return Observable.of({type: 'TASK_ADDED'});
+    });
 }
+

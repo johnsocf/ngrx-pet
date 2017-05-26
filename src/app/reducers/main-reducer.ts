@@ -11,17 +11,12 @@ export const mainStoreReducer: ActionReducer<State> =
   (state = initialState, action: Action) => {
 
     switch (action.type) {
-      case 'GOT_FIREBASE_ARRAY': {
-
+      case 'GOT_FIREBASE_ARRAY':
         if (action.payload.petInfo != undefined) {
           return {...state, petInfo: action.payload.petInfo.Pets, tasks: action.payload.petInfo.Pets[0]['tasks']}
         }
-
-      }
-      case 'TASK_ADDED': {
+      case 'TASK_ADDED':
         return {...state, tasks: _.union(state.tasks, action.payload)};
-      }
-
       default: {
         return state;
       }

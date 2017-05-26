@@ -53,11 +53,9 @@ export class MainEffects {
     .ofType('ADD_NEW_TASK')
     .map(toPayload)
     .switchMap(payload => {
+      const newValue = JSON.parse(JSON.stringify(payload));
       debugger;
-      this.af.list('/Pets/0/tasks').push({
-        "pooped": payload.poop,
-        "walked": payload.walked
-      });
+      this.af.list('/Pets/0/tasks').push(newValue);
        return Observable.of({type: 'TASK_ADDED'});
     });
 }

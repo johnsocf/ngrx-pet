@@ -14,6 +14,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LifestyleOverviewComponent } from './components/lifestyle-overview/lifestyle-overview.component';
 import { TasksComponent } from './components/tasks/tasks.component';
+import { CalendarOverviewComponent } from './components/calendar-overview/calendar-overview.component';
+import {MomentModule} from 'angular2-moment';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyC06PQZY0-xDGmutG_BOdu4Rqb3s5_rT00",
@@ -28,12 +30,14 @@ export const firebaseConfig = {
   declarations: [
     AppComponent,
     LifestyleOverviewComponent,
-    TasksComponent
+    TasksComponent,
+    CalendarOverviewComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    MomentModule,
     StoreModule.provideStore({mainStoreReducer}),
     EffectsModule.run(MainEffects),
     AngularFireModule.initializeApp(firebaseConfig),

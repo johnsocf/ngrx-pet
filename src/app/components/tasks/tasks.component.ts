@@ -1,6 +1,7 @@
 import {Component, SimpleChanges, Input} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { State } from '../../state/main-state';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'app-tasks',
@@ -50,13 +51,12 @@ export class TasksComponent {
   }
 
   save(f) {
-    debugger;
+    const taskLog = {...f, dateTime: new Date(), taskId: _.uniqueId()}
     console.log('save');
-    this.store.dispatch({type: "ADD_NEW_TASK", payload: f});
+    this.store.dispatch({type: "ADD_NEW_TASK", payload: taskLog});
   }
 
   boxChecked(event) {
-    debugger;
     console.log('checked', event.target.checked);
     return !event.target.checked
   }

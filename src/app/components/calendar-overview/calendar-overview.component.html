@@ -1,0 +1,16 @@
+
+<p>calendar-overview works!</p>
+  <form #f="ngForm">
+    <ul class="task-log" *ngFor="let task of tasksFromToday">
+      <li class="task-log-list-item">{{task.dateTime | amDateFormat: 'hh:mm A'}}</li>
+      <li class="task-log-list-item" *ngIf="task.poop">pooped</li>
+      <li class="task-log-list-item" *ngIf="task.pee">peed</li>
+      <li class="task-log-list-item" *ngIf="task.fed">fed</li>
+      <li class="task-log-list-item" *ngIf="task.treats">treats</li>
+      <li class="task-log-list-item" *ngIf="task.watered">watered</li>
+      <li class="task-log-list-item" *ngIf="task.walked">walked</li>
+      <li class="task-log-list-item" *ngIf="task.played">played</li>
+    </ul>
+    toDo: edit view.
+    <!--<button type="submit">edit</button>-->
+  </form>

@@ -14,9 +14,11 @@ export class LifestyleOverviewComponent {
     grooming: [],
     purchases: []
   };
+  tasks: any = [];
   @Input()
   petData: object;
   constructor() { }
+
   ngOnInit() {
     if (this.petData) {
       console.log('pet info in lifestyle overview component', this.petData);
@@ -24,14 +26,14 @@ export class LifestyleOverviewComponent {
   }
   ngOnChanges(changes: SimpleChanges) {
     if (changes.petData.previousValue) {
-      console.log('chachacha...chaaaangees', changes.petData.currentValue);
-      const doggie = _.values(changes.petData.currentValue)[0];
-      console.log('group by', _.groupBy(doggie.needs, 'mainType'));
+      const doggie = changes.petData.currentValue;
       this.name = doggie.name;
       this.needs.exercise = _.groupBy(doggie.needs, 'mainType').exercise;
       this.needs.grooming = _.groupBy(doggie.needs, 'mainType').grooming;
       this.needs.purchases = _.groupBy(doggie.needs, 'mainType').purchases;
+      this.tasks = doggie.tasks;
       this.behavior = doggie.behavior;
+      debugger;
     }
   }
 

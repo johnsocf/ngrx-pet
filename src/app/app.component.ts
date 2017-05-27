@@ -12,6 +12,7 @@ import * as _ from 'lodash';
 export class AppComponent {
   title = 'pet app';
   data = {};
+  tasks:any = [];
   displayText:string = '';
 
   constructor (private store: Store <State>) {
@@ -20,6 +21,9 @@ export class AppComponent {
     store.select('mainStoreReducer')
       .subscribe( (data: State) => {
         this.data = data.petInfo;
+        debugger;
+        console.log('pet info', data.petInfo);
+        this.tasks = data.petInfo['tasks'];
         // this.displayText = data.displayText;
         console.log('component sees data is: ' + data.petInfo);
         console.log('component sees data is: ' + _.keys(data.petInfo));

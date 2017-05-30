@@ -17,17 +17,12 @@ export class AppComponent {
   displayText:string = '';
 
   constructor (private store: Store <ApplicationState>) {
-    console.log('we have a store! ' + store);
 
     store.select<StoreData>('storeData')
       .subscribe( (data: StoreData) => {
-        debugger;
         this.data = data.petInfo;
-        console.log('pet info', data.petInfo);
         this.tasks = data.petInfo['tasks'];
         // this.displayText = data.displayText;
-        console.log('component sees data is: ' + data.petInfo);
-        console.log('component sees data is: ' + _.keys(data.petInfo));
       });
 
     setTimeout(() => {

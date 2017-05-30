@@ -1,5 +1,9 @@
 import {Component, OnInit, Input, SimpleChanges} from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ApplicationState } from '../../store/state/application-state';
+import {StoreData} from "../../store/state/store-data";
 import * as _ from 'lodash';
+
 
 @Component({
   selector: 'app-lifestyle-overview',
@@ -17,24 +21,27 @@ export class LifestyleOverviewComponent {
   tasks: any = [];
   @Input()
   petData: object;
-  constructor() { }
+  constructor(private store: Store<ApplicationState>) {
+    store.select<StoreData>('storeData')
+      .subscribe((data: StoreData) => {
+        this.petData = data.petInfo;
+        if (this.petData) {
+          const doggie = data.petInfo;
+          this.name = doggie.name;
+          this.needs.exercise = _.groupBy(doggie.needs, 'mainType').exercise;
+          this.needs.grooming = _.groupBy(doggie.needs, 'mainType').grooming;
+          this.needs.purchases = _.groupBy(doggie.needs, 'mainType').purchases;
+          this.tasks = doggie.tasks;
+          this.behavior = doggie.behavior;
+        }
+      });
+  }
 
   ngOnInit() {
-    if (this.petData) {
-      console.log('pet info in lifestyle overview component', this.petData);
-    }
+
   }
   ngOnChanges(changes: SimpleChanges) {
-    if (changes.petData.previousValue) {
-      const doggie = changes.petData.currentValue;
-      this.name = doggie.name;
-      this.needs.exercise = _.groupBy(doggie.needs, 'mainType').exercise;
-      this.needs.grooming = _.groupBy(doggie.needs, 'mainType').grooming;
-      this.needs.purchases = _.groupBy(doggie.needs, 'mainType').purchases;
-      this.tasks = doggie.tasks;
-      this.behavior = doggie.behavior;
-      debugger;
-    }
+
   }
 
 }

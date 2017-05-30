@@ -1,6 +1,9 @@
 import { Component, OnInit, SimpleChanges, Input } from '@angular/core';
 import * as _ from 'lodash';
 import * as moment from 'moment';
+import { Store } from '@ngrx/store';
+import { ApplicationState } from '../../store/state/application-state';
+import {StoreData} from "../../store/state/store-data";
 
 @Component({
   selector: 'app-calendar-overview',
@@ -15,16 +18,12 @@ export class CalendarOverviewComponent {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('cha-chaaanges, calendar', changes);
-    debugger;
     if (changes.tasks.currentValue) {
-      console.log('tasks', this.tasks[0].timeDate);
       const firstDateTime = this.tasks[0].timeDate;
       const day = moment(firstDateTime).day();
       let groups = _.groupBy(changes.tasks.currentValue, function(date) {
         return moment(date.dateTime).date();
       })
-      console.log('groups', groups);
       const todaysDay = moment().date();
       const todaysTasks = groups[todaysDay];
       this.tasksFromToday = todaysTasks;

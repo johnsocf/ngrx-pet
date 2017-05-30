@@ -8,7 +8,6 @@ import * as _ from 'lodash';
 
 export const mainStoreReducer: ActionReducer<StoreData> =
   (state = INITIAL_STORE_DATA, action: Action) => {
-    debugger;
     switch (action.type) {
       case 'GOT_FIREBASE_ARRAY':
         if (action.payload.petInfo != undefined) {

@@ -2,7 +2,7 @@ export interface StoreData {
 
   counter: number;
   displayText: string;
-  petInfo: object;
+  petInfo: any;
   tasks: any;
 
 }

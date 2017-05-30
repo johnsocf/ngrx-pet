@@ -15,7 +15,25 @@ export class CalendarOverviewComponent {
   tasks: any = [];
   tasksFromToday: any = [];
 
-  constructor() { }
+  constructor(private store: Store<ApplicationState>) {
+    store.select<StoreData>('storeData')
+    store.select<StoreData>('storeData')
+      .subscribe((data: StoreData) => {
+
+        this.tasks = data.petInfo.tasks;
+        if (data.petInfo.tasks) {
+          const firstDateTime = this.tasks[0].timeDate;
+          const day = moment(firstDateTime).day();
+          let groups = _.groupBy(data.petInfo.tasks, function(date) {
+            return moment(date.dateTime).date();
+          })
+          const todaysDay = moment().date();
+          const todaysTasks = groups[todaysDay];
+          this.tasksFromToday = todaysTasks;
+        }
+        // this.displayText = data.displayText;
+      });
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.tasks.currentValue) {

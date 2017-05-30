@@ -2,6 +2,7 @@ import {Component, SimpleChanges, Input} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ApplicationState } from '../../store/state/application-state';
 import {StoreData} from "../../store/state/store-data";
+import {Router} from '@angular/router';
 import * as _ from 'lodash';
 
 @Component({
@@ -32,8 +33,6 @@ export class TasksComponent {
 
     store.select<StoreData>('storeData')
       .subscribe((data: StoreData) => {
-        debugger;
-
         this.task = data.petInfo['tasks'];
         // this.displayText = data.displayText;
       });

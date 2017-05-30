@@ -1,6 +1,6 @@
 import {Component, SimpleChanges, Input} from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State } from '../../state/main-state';
+import { ApplicationState } from '../../store/state/application-state';
 import * as _ from 'lodash';
 
 @Component({
@@ -27,7 +27,7 @@ export class TasksComponent {
   tasksLogged: any = [];
   task: any = {};
 
-  constructor(private store: Store <State>) { }
+  constructor(private store: Store <ApplicationState>) { }
 
   ngOnInit() {
     this.pet = {

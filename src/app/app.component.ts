@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { State } from './state/main-state';
-import { INCREMENT } from './actions/main-action-creator';
+import { ApplicationState } from './store/state/application-state';
+import { INCREMENT } from './store/actions/main-action-creator';
 import * as _ from 'lodash';
+import {StoreData} from "./store/state/store-data";
 
 @Component({
   selector: 'app-root',
@@ -15,13 +16,13 @@ export class AppComponent {
   tasks:any = [];
   displayText:string = '';
 
-  constructor (private store: Store <State>) {
+  constructor (private store: Store <ApplicationState>) {
     console.log('we have a store! ' + store);
 
-    store.select('mainStoreReducer')
-      .subscribe( (data: State) => {
-        this.data = data.petInfo;
+    store.select<StoreData>('storeData')
+      .subscribe( (data: StoreData) => {
         debugger;
+        this.data = data.petInfo;
         console.log('pet info', data.petInfo);
         this.tasks = data.petInfo['tasks'];
         // this.displayText = data.displayText;

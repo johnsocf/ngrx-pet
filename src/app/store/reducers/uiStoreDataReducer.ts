@@ -2,14 +2,13 @@
  * Created by catherinejohnson on 5/24/17.
  */
 import {ActionReducer, Action} from '@ngrx/store';
-import {State, initialState} from '../state/main-state';
+import {StoreData, INITIAL_STORE_DATA} from '../state/store-data';
 import * as _ from 'lodash';
-import {INCREMENT, EVENT_FROM_EFFECT} from '../actions/main-action-creator';
 
 
-export const mainStoreReducer: ActionReducer<State> =
-  (state = initialState, action: Action) => {
-
+export const mainStoreReducer: ActionReducer<StoreData> =
+  (state = INITIAL_STORE_DATA, action: Action) => {
+    debugger;
     switch (action.type) {
       case 'GOT_FIREBASE_ARRAY':
         if (action.payload.petInfo != undefined) {
